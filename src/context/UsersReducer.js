@@ -3,6 +3,7 @@ const reducer = (globalState, action) => {
 
     switch (action.type) {
         case 'REGISTRO_EXITOSO':
+        case 'LOGIN_EXITOSO':
 
             localStorage.setItem('token', action.payload)
 
@@ -11,7 +12,7 @@ const reducer = (globalState, action) => {
                 authStatus: true
             }
             break;
-    
+
         case 'VERIFICAR_TOKEN':
             return {
                 ...globalState,
@@ -19,7 +20,21 @@ const reducer = (globalState, action) => {
                 authStatus: true
             }
             break;
-            
+
+        case 'CERRAR_SESION':
+
+            localStorage.removeItem('token')
+
+            return {
+                ...globalState,
+                authStatus: false,
+                currentUser: {
+                    name: '',
+                    lastname: '',
+                    email: ''
+                }
+            }
+
         default:
             return globalState
             break;

@@ -56,7 +56,7 @@ export default function Register() {
                 <label>Correo</label>
                 <input
                     name="email"
-                    type="text"
+                    type="email"
                     value={data.email}
                     onChange={(evt) => { handleChange(evt) }}
                 />

@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import axios from 'axios';
+import axiosClient from '../../config/axios';
 
 import PetsContext from './PetsContext'
 import PetsReducer from './PetsReducer'
@@ -17,7 +17,7 @@ const PetsState = (props) => {
 
     const getPets = async () => {
 
-        const res = await axios.get('http://localhost:3005/api/pets');
+        const res = await axiosClient.get('/api/pets');
 
         const arrCats = res.data.data;
 
@@ -30,7 +30,7 @@ const PetsState = (props) => {
 
     const createPet = async (dataForm) => {
 
-        const res = await axios.post('http://localhost:3005/api/pets/create', dataForm);
+        const res = await axiosClient.post('/api/pets/create', dataForm);
 
         getPets()
 
